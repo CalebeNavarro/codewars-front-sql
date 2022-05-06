@@ -32,7 +32,6 @@ const Register = ({setIsAlreadyRegister}) => {
   });
   const onSubmit = data => {
     delete data.passwordConfirmation
-    console.log(data)
     api_kenzie.post("/student", data)
     .then(response => {
       notify("Conta criada!");

@@ -1,4 +1,4 @@
-import { UserProfileStyle } from "./style";
+import { UserProfileStyle, TextField, MainContainer, TextFieldToUpdatedHonor } from "./style";
 import { StudentInfo } from "../../providers/NameEnabler";
 import { EnablerInfo } from "../../providers/Enabler";
 import api_kenzie from "../../services/api_kenzie";
@@ -9,7 +9,12 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import Button from '@mui/material/Button';
+
 import SendIcon from '@mui/icons-material/Send';
+import LogoutIcon from '@mui/icons-material/Logout';
+import UpgradeIcon from '@mui/icons-material/Upgrade';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+
 import { toast } from 'react-toastify';
 
 
@@ -22,17 +27,16 @@ const schema = yup.object().shape({
 
 
 const UserPerfil = () => {
-  const { student, getInfoUser, token } = StudentInfo();
+  const { student, getInfoUser, token, setIsLogin } = StudentInfo();
   const { listEnabler } = EnablerInfo();
 
-  const [ feedbackVisual, setFeedbackVisual ] = useState("");
   const [ enabler, setEnabler ] = useState("");
   const [ update, setUpdate ] = useState(false);
   const [ name, setName ] = useState(student["user"]?.name)
   const [ username, setUsername ] = useState(student["user"]?.username)
 
   useEffect(() => {
-    findEnabler(2)
+    findEnabler(student.enabler_id)
   }, [student]);
 
   const notify = (message) => toast(message);
@@ -44,39 +48,48 @@ const UserPerfil = () => {
   const updateStudentHonors = (student_id) => {
     api_kenzie.patch(`/student/${student_id}/honors`)
     .then(response => {
-      setFeedbackVisual(response)
       getInfoUser()
     })
     .catch(error => {
       if(error.response) {
-        setFeedbackVisual(error.response.data)
+        notify(error.response.data.message)
       }
     })
   }
 
   const findEnabler = (enabler_id) => {
+    if (!enabler_id){
+      return
+    }
     api_kenzie.get(`/enabler/${enabler_id}`)
     .then(response => {
       setEnabler(response.data)
     })
     .catch(error => {
       if(error.response) {
-        setFeedbackVisual(error.response.data)
+        notify(error.response.data)
       }
     })
   }
 
+  const logOut = () => {
+    localStorage.clear()
+    setIsLogin(false)
+  }
+
   const onSubmit = async data => {
-    if (data.enabler_id) {
-      api_kenzie.put("/student", {"enabler_id": +data.enabler_id}, {
+    if (data.enabler_id !== "Lista Facilitadores") {
+      await api_kenzie.put("/student", {"enabler_id": data.enabler_id}, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       })
-      .then(response => console.log(response))
+      .then(response => {
+        notify(response.data.message)
+      })
       .catch(error => {
         if(error.response) {
-          console.log(error.resopnse.data);
+          notify(error.resopnse.data);
         }
       })
     }
@@ -89,7 +102,7 @@ const UserPerfil = () => {
     .then(response => notify("Updated!"))
     .catch(error => {
       if(error.response) {
-        console.log(error.resopnse.data);
+        notify(error.resopnse.data);
       }
     })
     getInfoUser();
@@ -99,57 +112,58 @@ const UserPerfil = () => {
   return (
     <UserProfileStyle>
       <h1>Welcome</h1>
-      <button onClick={() => setUpdate(true)}>Atualizar Perfil</button>
+      
+      {update ? (
+        <Button onClick={() => setUpdate(false)} variant="contained" endIcon={<ArrowBackIcon />}>Voltar</Button>
+      ) : (
+        <Button onClick={() => setUpdate(true)} variant="contained" endIcon={<UpgradeIcon />}>Atualizar Perfil</Button>
+      )}
+
 
       {update ? (
         <form
           onSubmit={handleSubmit(onSubmit)}
+          onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); }}
         >
-          <main>
-            <div>
+          <MainContainer>
+            <TextField>
               <label htmlFor="">Name</label>
               <input type="text" {...register("name")} value={name} onChange={e => setName(e.target.value)}/>
-            </div>
- 
-            <div>
-              <button onClick={() => updateStudentHonors(student.id)}>Atualizar</button> 
-              <p>Atual honra: {student["user"].current_honor}</p>
-            </div>
+            </TextField>
 
-            <div>
+            <TextField>
               <label htmlFor="">Username</label>
               <input value={username} {...register("username")} onChange={e => setUsername(e.target.value)}/>
-            </div>
+            </TextField>
 
-            <div>
+            <TextField>
               <label  >Seu atual facilitador: {enabler["user"]?.name}</label>
               <select {...register("enabler_id")}>
-                <option >--Lista Facilitadores--</option>
+                <option key={null} value={null} >Lista Facilitadores</option>
                 {listEnabler.map(enabler => (
                   <option key={enabler.id} value={enabler["id"]}>{enabler["user"].name}</option>
                 ))}
               </select>
-            </div>
-          </main>
-          <Button type="submit" variant="contained" endIcon={<SendIcon />}>Atualizar</Button>
+            </TextField>
+            <Button type="submit" variant="contained" endIcon={<UpgradeIcon />}>Atualizar</Button>
+          </MainContainer>
+
         </form>
 
       ) : (
-        <main>
-        <p>Name: {student["user"].name}</p>
-        <div>
-          <p>Atual honra: {student["user"].current_honor}</p>
-        </div>
-        <div>
-          <p>Username: {student["user"].username}</p>
-        </div>
-        <p>Email: {student["user"].email}</p>
-        <p>Facilitador: {enabler["user"]?.name}</p>
-      </main>
+        <MainContainer>
+        <p><span>Name:</span> {student["user"].name}</p>
+        <TextFieldToUpdatedHonor>
+          <p><span>Atual honor:</span> {student["user"].current_honor}</p>
+          <Button onClick={() => updateStudentHonors(student.id)} variant="contained">Atualizar</Button>
+        </TextFieldToUpdatedHonor>
+          <p><span>Username:</span> {student["user"].username}</p>
+        <p><span>Email:</span> {student["user"].email}</p>
+        <p><span>Facilitador:</span> {enabler["user"]?.name}</p>
+      </MainContainer>
       )}
 
-
-      {feedbackVisual && <p>{feedbackVisual?.message}</p>}
+      <Button onClick={logOut} variant="contained" endIcon={<LogoutIcon />}>Logout</Button>
     </UserProfileStyle>
   )
 }

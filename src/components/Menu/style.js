@@ -5,18 +5,10 @@ export const MenuStyled = styled.div`
   top: 7px;
   left: 30px;
 
-:root {
-  --primColor: #dcdcdc;
-  --secoColor: #555555;
-  --cornerRad: 4px;
-}
-
 summary {
   writing-mode: vertical-lr;
   text-align: center;
-  padding: 12px 10px;
-  width: 23px;
-  height: 17px;
+  padding: 8  px;
   background-color: var(--primColor);
   border: 2px solid var(--secoColor);
   border-radius: var(--cornerRad);
@@ -61,8 +53,6 @@ details[open] summary::after {
   content: "";
 }
 .menu {
-  height: 0;
-  width: fit-content;
   border-radius: var(--cornerRad);
   background-color: var(--primColor);
   box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.2);
@@ -71,7 +61,6 @@ details[open] summary::after {
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
-  animation: closeMenu 300ms ease-in-out forwards;
 }
 .menu a {
   padding: 12px 24px;

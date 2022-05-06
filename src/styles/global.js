@@ -19,6 +19,9 @@ const GlobalStyle = createGlobalStyle`
         --black: #0C0D0B;
         --color-placeholder:#4e5555;
         --font-home: "Baloo Tamma 2", "cursive";
+        --primColor: #dcdcdc;
+        --secoColor: #555555;
+        --cornerRad: 4px;
     }
 
     body {

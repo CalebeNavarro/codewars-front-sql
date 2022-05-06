@@ -40,10 +40,7 @@ const SignIn = ({setIsAlreadyRegister}) => {
       {errors.password && <p>{errors.password.message}</p>}
       <Button type="submit" variant="contained" endIcon={<SendIcon />}>Sign In</Button>
     </form>
-    <p>Or</p>
-    <button>
-      Google account Login
-    </button>
+
     <p>Ainda não tem uma conta? <button onClick={() => setIsAlreadyRegister(false)}>Cadastrar!</button></p>
   </UserStyled>
   )

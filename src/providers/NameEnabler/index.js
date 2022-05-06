@@ -50,7 +50,7 @@ export const NameEnabler = ({ children }) => {
 
   return (
     <StudentContext.Provider
-      value={{login, isLogin, token, student, getInfoUser, isLogin}}
+      value={{login, isLogin, token, student, getInfoUser, isLogin, setIsLogin}}
     >
       {children}
     </StudentContext.Provider>

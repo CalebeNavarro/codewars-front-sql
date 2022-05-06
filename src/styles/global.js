@@ -8,6 +8,10 @@ const GlobalStyle = createGlobalStyle`
         outline: 0;
     }
 
+    body {
+        margin: 0 !important;
+    }
+
     :root {
         --color-primary: #fff;
         --color-second: #001e32;

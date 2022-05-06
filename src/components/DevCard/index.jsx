@@ -16,8 +16,8 @@ const DevCard = ({dev, position}) => {
   return (
     <>
       <Modal
-        open={open}
-        onClose={handleClose}
+        // open={open}
+        // onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >

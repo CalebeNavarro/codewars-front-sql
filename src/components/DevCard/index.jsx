@@ -7,7 +7,7 @@ import Modal from '@mui/material/Modal';
 import Profile from './../profile'
 
 
-const DevCard = ({dev, position}) => {
+const DevCard = ({dev, position, user_id}) => {
   let color = "yellow";
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -16,13 +16,13 @@ const DevCard = ({dev, position}) => {
   return (
     <>
       <Modal
-        // open={open}
-        // onClose={handleClose}
+        open={open}
+        onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box>
-          <Profile user={dev} />
+          <Profile user={dev} user_id={user_id}/>
         </Box>
       </Modal>
 

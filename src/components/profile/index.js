@@ -1,26 +1,44 @@
 import AnyChart from 'anychart-react'
 import { Modal } from './style';
+import api_kenzie from '../../services/api_kenzie';
+import anychart from 'anychart'
+import { useEffect, useState } from 'react';
+
+const Profile = ({user, user_id}) => {
+  const [ honors, setHonors ] = useState([]);
 
 
-const Profile = ({user}) => {
+  const getHonors = (user_id) => {
+    api_kenzie.get(`/users/${user_id}/honors`)
+      .then(response => {
+        const resultDataFormat = dataFunction(response.data)
+        setHonors(resultDataFormat)
+      })
+      .catch(error => {
+      })
+  }
 
-  const arr = user["honors"];
+  useEffect(() => {
+    getHonors(user_id)
+  }, [])
+
+
+
   const dataFunction = (arr) => {
     let result = "";
 
     arr.forEach(currentData => {
-      result += `${currentData["date"]},${currentData["honor"]}\n`
+      
+      result += `${currentData["data"].substring(5, 11).split(" ").join("/")},${currentData["honor"]}\n`
     });
-
     return result;
   }
-  const data = dataFunction(arr);
   
   const complexSettings = {
     width: 800,
     height: 600,
     type: 'line',
-    data: data,
+    data: honors,
     title: user["name"],
     yAxis: [1, {
       orientation: 'right',

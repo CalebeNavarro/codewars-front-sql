@@ -6,9 +6,8 @@ import Dashboard from '../pages/Dashboard/index'
 import Header from '../components/Header'
 import HomeStyle from '../pages/Home/index';
 import Menu from "../components/Menu";
-import Profile from '../components/profile';
 import Perfil from "../pages/Perfil";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import api_kenzie from "../services/api_kenzie";
 
 const MyRoutes = () => {

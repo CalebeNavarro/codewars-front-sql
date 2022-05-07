@@ -5,11 +5,14 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
+import ReCAPTCHA from "react-google-recaptcha";
+
+import { useRef } from 'react';
+
 
 import api_kenzie from '../../services/api_kenzie';
 
 import { toast } from 'react-toastify';
-
 
 
 const schema = yup.object().shape({
@@ -26,11 +29,25 @@ const schema = yup.object().shape({
 
 const Register = ({setIsAlreadyRegister}) => {
   const notify = (message) => toast(message);
+  const reRef = useRef();
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm({
     resolver: yupResolver(schema)
+    // defaultValues: {
+    //   email: "calebe@gmai.com",
+    //   name: "teste",
+    //   username: "matheus",
+    //   password: "fffff",
+    //   passwordConfirmation: "fffff"
+    // }
   });
-  const onSubmit = data => {
+
+
+  const onSubmit = async data => {
+    const token = await reRef.current.executeAsync();
+    data["token"] = token;
+    reRef.current.reset();
+
     delete data.passwordConfirmation
     api_kenzie.post("/student", data)
     .then(response => {
@@ -64,6 +81,12 @@ const Register = ({setIsAlreadyRegister}) => {
 
       <TextField id="outlined-basic3" autoComplete="new-password" type="password" label="Confirm Password" variant="outlined" {...register("passwordConfirmation")}/>
       {errors.passwordConfirmation && <p>{errors.passwordConfirmation.message}</p>}
+
+      <ReCAPTCHA
+        sitekey="6LcWbdAfAAAAAIAemIw6msMJ91at1gB2hmVGVUC1"
+        size="invisible"
+        ref={reRef}
+      />
 
       <Button type="submit" variant="contained" endIcon={<SendIcon />}>Register</Button>
     </form>

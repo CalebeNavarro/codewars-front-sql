@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react";
-import { StudentInfo } from './../../providers/NameEnabler'
 import DevCard from './../../components/DevCard';
 import { MainStyle } from "./style";
-import { Navigate } from "react-router-dom";
+
 
 const Dashboard = ({enabler, isEnabler, enablerAndDevs}) => {
   let totalHonor = 0;
@@ -27,6 +25,7 @@ const Dashboard = ({enabler, isEnabler, enablerAndDevs}) => {
           )
           : (
             enablerAndDevs.map((user, index)=> (
+              !index + 1 > 10 &&
               <DevCard key={user.id} user_id={user.user.id} enabler_id={user.id} position={index + 1}
                 dev={user.user} 
               />

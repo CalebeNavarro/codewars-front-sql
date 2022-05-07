@@ -43,7 +43,7 @@ const MyRoutes = () => {
         <Dashboard enabler={enabler} isEnabler={isEnabler} enablerAndDevs={enablerAndDevs}/>
         <Menu />
         </>} />
-      <Route path="/profile" element={<Profile/>} />
+      {/* <Route path="/profile" element={<Profile/>} /> */}
       <Route path="/user" element={<>
         <Perfil />
         <Menu />

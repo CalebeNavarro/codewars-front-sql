@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import SignIn from "../../components/SignIn";
 import Register from "../../components/Register"
 import { StudentInfo } from "../../providers/NameEnabler";

@@ -42,7 +42,7 @@ summary::marker {
 summary::-webkit-details-marker {
   display: none;
 }
-details[open] .menu {
+details[open] nav {
   animation-name: menuAnim;
 }
 details[open] summary::before {
@@ -52,7 +52,7 @@ details[open] summary::before {
 details[open] summary::after {
   content: "";
 }
-.menu {
+nav {
   border-radius: var(--cornerRad);
   background-color: var(--primColor);
   box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.2);
@@ -62,7 +62,7 @@ details[open] summary::after {
   justify-content: space-between;
   overflow: hidden;
 }
-.menu a {
+nav a {
   padding: 12px 24px;
   margin: 0 16px;
   color: var(--secoColor);
@@ -71,13 +71,13 @@ details[open] summary::after {
   text-align: center;
   transition: filter 200ms linear 0s;
 }
-.menu a:nth-of-type(1) {
+nav a:nth-of-type(1) {
   padding-top: 24px;
 }
-.menu a:nth-last-of-type(1) {
+nav a:nth-last-of-type(1) {
   border-bottom: none;
 }
-.menu a:hover {
+nav a:hover {
   filter: brightness(200%);
 }
 details[open]::before {

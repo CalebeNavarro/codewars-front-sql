@@ -20,12 +20,14 @@ const MyRoutes = () => {
     if (id) {
       await api_kenzie.get(`/${uri}/${id}`)
       .then(response => {
+        response.data["students"].sort((a,b) => b["user"].current_honor - a["user"].current_honor)
         setEnabler(response.data)
       })
       setIsEnabler(true);
     } else {
       await api_kenzie.get(`/${uri}`)
       .then(response => {
+        response.data.sort((a,b) => b["user"].current_honor - a["user"].current_honor)
         setEnablerAndDevs(response.data)
       })
       setIsEnabler(false);

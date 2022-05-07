@@ -22,6 +22,7 @@ export const HeaderStyle = styled.header`
     display: inline-block;
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
+    cursor: pointer;
 }
 
 nav a:hover {

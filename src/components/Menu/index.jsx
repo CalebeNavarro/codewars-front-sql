@@ -7,7 +7,7 @@ export default function Menu() {
       <MenuStyled>
         <details>
           <summary></summary>
-          <nav className="menu">
+          <nav >
             <Link to="/user">Profile</Link>
             <Link to="/dashboard">Dashboard</Link>
           </nav>

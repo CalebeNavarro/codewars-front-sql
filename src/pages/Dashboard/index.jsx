@@ -18,14 +18,14 @@ const Dashboard = ({enabler, isEnabler, enablerAndDevs}) => {
         isEnabler
           ? (
             enabler.students.map((user, index) => (
+              index + 1 < 10 &&
               <DevCard key={user.id} user_id={user.user.id} enabler_id={user.id} position={index + 1}
                 dev={user.user} 
               />
             ))
           )
           : (
-            enablerAndDevs.map((user, index)=> (
-              !index + 1 > 10 &&
+            enablerAndDevs.map((user, index)=> (         
               <DevCard key={user.id} user_id={user.user.id} enabler_id={user.id} position={index + 1}
                 dev={user.user} 
               />

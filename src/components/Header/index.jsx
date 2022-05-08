@@ -24,8 +24,9 @@ export default function TemporaryDrawer({getEnabler}) {
     .then(response => setEnablers(response.data))
   }
 
-  useEffect(() => {
-    foo()
+  useEffect(async () => {
+    await foo();
+    getEnabler("student");
   }, []);
 
 

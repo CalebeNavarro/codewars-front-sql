@@ -20,7 +20,9 @@ O aluno consegue se cadastrar na [pagína Web](https://codewars-kenzie-sql.verce
 <p align="center">
   <img alt="Dashboard" title="#dasboard" src="https://i.imgur.com/tfjY7lX.jpg">
 
-  <img alt="Login Page" title="#loginUser" src="https://i.imgur.com/8z6BavV.png" width="400px" height="480px">
+  <img alt="Progressão do usuário" title="#progressaoUsuario" src="https://i.imgur.com/bLf6Oje.png">
+
+  <img alt="Login Page" title="#loginUser" src="https://i.imgur.com/8z6BavV.png" width="400px" height="540px">
 
   <img alt="Sign Page" title="#signPage" src="https://i.imgur.com/ZUOwx8P.png" width="400px" height="540px">
 

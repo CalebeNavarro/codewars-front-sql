@@ -21,8 +21,8 @@ export default function MenuPopupState() {
             Dashboard
           </Button>
           <Menu {...bindMenu(popupState)}>
-            <MenuItem onClick={popupState.close}><Link to="/user">Profile</Link></MenuItem>
-            <MenuItem onClick={popupState.close}><Link to="/dashboard">Dashboard</Link></MenuItem>
+            <MenuItem onClick={popupState.close}><Link style={{ color: "black"}} to="/user">Profile</Link></MenuItem>
+            <MenuItem onClick={popupState.close}><Link style={{ color: "black"}} to="/dashboard">Dashboard</Link></MenuItem>
             {/* <MenuItem onClick={popupState.close}>Logout</MenuItem> */}
           </Menu>
         </React.Fragment>

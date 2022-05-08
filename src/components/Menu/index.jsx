@@ -18,7 +18,7 @@ export default function MenuPopupState() {
       {(popupState) => (
         <React.Fragment>
           <Button variant="contained" {...bindTrigger(popupState)} style={style}>
-            Dashboard
+            Menu
           </Button>
           <Menu {...bindMenu(popupState)}>
             <MenuItem onClick={popupState.close}><Link style={{ color: "black"}} to="/user">Profile</Link></MenuItem>

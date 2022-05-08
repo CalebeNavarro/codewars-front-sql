@@ -1,46 +1,52 @@
-# Getting Started with Create React App
+# [Kenzie Codewars](https://codewars-kenzie-sql.vercel.app/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Web site desenvolvido para os alunos da Kenzie.
 
-## Available Scripts
+#### Projeto concluído ✔️
 
-In the project directory, you can run:
+[Sobre](#sobre) • [Tecnologias](#tecnologias) • [Licença](#Licença)
 
-### `yarn start`
+## Repositório Back-End
+- [Repositório](https://github.com/CalebeNavarro/codewars-back-sql)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Sobre
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Projeto simples desenvolvido para aperfeiçoar o conhecimento em React no Front End e Python com Flask no Back End.
 
-### `yarn test`
+O aluno consegue se cadastrar na [pagína Web](https://codewars-kenzie-sql.vercel.app/) e escolher seu atual facilitador (professor), ficando na mesma lista que os seus colegas. No seu cadastro, é necessário o username do site [Codewars](https://www.codewars.com/), onde é a informação principal do site, com seu cadastro pronto, o aluno vai ter acesso a sua progressão diária, dos facilitadores e a de seus colegas.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Layout
 
-### `yarn build`
+<p align="center">
+  <img alt="Dashboard" title="#dasboard" src="https://i.imgur.com/tfjY7lX.jpg">
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  <img alt="Login Page" title="#loginUser" src="https://i.imgur.com/8z6BavV.png" width="400px" height="480px">
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  <img alt="Sign Page" title="#signPage" src="https://i.imgur.com/ZUOwx8P.png" width="400px" height="540px">
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  <img alt="User Page" title="#userPage" src="https://i.imgur.com/9RkyA69.png" width="500px" height="540px">
 
-### `yarn eject`
+  <img alt="Atualização dos dados" title="#atualizarDados" src="https://i.imgur.com/Jyy8LMV.png" width="500px" height="540px">
+</p>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Tecnologias
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Algumas das seguintes ferramentas foram utilizadas na construção do projeto:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- [React](https://reactjs.org/)
+- [MUI](https://mui.com/)
+- [Chartjs](https://www.chartjs.org/)
+- [reCAPTCHA](https://www.google.com/recaptcha/about/)
+- [Styled Components](https://www.styled-components.com/)
+- [Axios](https://www.npmjs.com/package/axios)
+- [Yup](https://www.npmjs.com/package/yup)
+- [React Hook Form](https://react-hook-form.com/)
+- [React Router DOM](https://www.npmjs.com/package/react-router-dom)
+- [React Icons](https://react-icons.github.io/react-icons/)
+- [Context API](https://reactjs.org/docs/context.html)
+- [React Toastify](https://www.npmjs.com/package/react-toastify)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## Licença
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Este projeto está sob a licença [MIT](https://choosealicense.com/licenses/mit/).

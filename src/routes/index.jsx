@@ -5,7 +5,7 @@ import {
 import Dashboard from '../pages/Dashboard/index'
 import Header from '../components/Header'
 import HomeStyle from '../pages/Home/index';
-import Menu from "../components/Menu";
+import MenuPopupState from "../components/Menu";
 import Perfil from "../pages/Perfil";
 import { useState } from "react";
 import api_kenzie from "../services/api_kenzie";
@@ -40,11 +40,11 @@ const MyRoutes = () => {
       <Route path="/dashboard" element={<>
         <Header getEnabler={getEnabler}/>
         <Dashboard enabler={enabler} isEnabler={isEnabler} enablerAndDevs={enablerAndDevs}/>
-        <Menu />
+        <MenuPopupState />
         </>} />
       <Route path="/user" element={<>
         <Perfil />
-        <Menu />
+        <MenuPopupState />
       </>}/>
     </Routes>
     </>
